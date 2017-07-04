@@ -14,7 +14,7 @@ const ToDoItem = (props) => {
                 onChange={() => props.handleComplete(props.id)}
             />
             <span className={isCompleteCss}>{props.name}</span>
-            <span className="todo-delete">&#xd7;</span>
+            <span className="todo-delete" onClick={() => props.handleDelete(props.id)}>&#xd7;</span>
         </li>
     );
 };

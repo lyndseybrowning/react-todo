@@ -11,23 +11,8 @@ class ToDoList extends Component {
                 {
                     id: 1,
                     name: 'Create React To Do List example',
-                    completed: true
-                },
-                {
-                    id: 2,
-                    name: 'Add',
                     completed: false
                 },
-                {
-                    id: 3,
-                    name: 'zzzzz',
-                    completed: true
-                },
-                {
-                    id: 4,
-                    name: 'hello world',
-                    completed: false
-                }
             ]
         };
     }
@@ -71,6 +56,23 @@ class ToDoList extends Component {
         e.target.value = '';
     }
 
+    handleDelete(id) {
+        const todo = this.state.todo;
+        const itemIndex = todo.findIndex(item => item.id === id);
+          
+        if (itemIndex === 0) {
+            return;
+        }
+            
+        const todoCopy = todo.slice();
+
+        // remove the current object
+        todoCopy.splice(itemIndex, 1);
+        
+        // update state and force a render
+        this.setState({ todo: todoCopy })
+    }
+
     renderItems() {
         const items = this.state.todo;
         const sortComplete = ((a, b) => a.completed > b.completed);
@@ -86,6 +88,7 @@ class ToDoList extends Component {
                     name={item.name} 
                     completed={item.completed}
                     handleComplete={this.handleComplete.bind(this)}
+                    handleDelete={this.handleDelete.bind(this)}
                 />
         ));
     }
