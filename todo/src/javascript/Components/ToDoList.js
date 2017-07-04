@@ -60,7 +60,7 @@ class ToDoList extends Component {
         const todo = this.state.todo;
         const itemIndex = todo.findIndex(item => item.id === id);
           
-        if (itemIndex === 0) {
+        if (typeof itemIndex === 'undefined') {
             return;
         }
             
