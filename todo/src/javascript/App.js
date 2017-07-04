@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
-import './App.css';
+import ToDoList from './Components/ToDoList';
+import logo from '../img/logo.svg';
+import '../css/App.css';
 
 class App extends Component {
   render() {
@@ -8,11 +9,12 @@ class App extends Component {
       <div className="App">
         <div className="App-header">
           <img src={logo} className="App-logo" alt="logo" />
-          <h2>Welcome to React</h2>
+          <h2>React To Do List</h2>
         </div>
         <p className="App-intro">
-          To get started, edit <code>src/App.js</code> and save to reload.
+          This is an example of a To Do List created using <code>ReactJs</code>.
         </p>
+        <ToDoList />
       </div>
     );
   }

@@ -1,0 +1,30 @@
+.todo {
+    padding: 1rem;
+    border: 1px solid #eee;
+    width: 50%;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.todo-add {
+    padding: 0.5rem;
+    width: 100%;
+}
+
+.todo-item {
+    list-style-type: none;
+    padding: 1rem;
+    border: 1px solid #e3e2de;
+}
+
+.todo-item .todo-complete {
+    float: left;
+}
+
+.todo-item .todo-delete {
+    float: right;
+}
+
+.todoitem.completed {
+    text-decoration: line-through;
+}
