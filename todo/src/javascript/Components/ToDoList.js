@@ -39,7 +39,7 @@ class ToDoList extends Component {
     }
 
     addItem(e) {
-        if (e.key !== 'Enter') {
+        if (e.key !== 'Enter' || !e.target.value) {
             return;
         }
 
