@@ -15,6 +15,7 @@
     list-style-type: none;
     padding: 1rem;
     border: 1px solid #e3e2de;
+    margin: 0.5rem 0;
 }
 
 .todo-item .todo-complete {
@@ -23,8 +24,17 @@
 
 .todo-item .todo-delete {
     float: right;
+    color: #000;
+    padding-left: 3px; 
+    padding-right: 3px;
+}
+
+.todo-item .todo-delete:hover {
+    cursor: pointer;
+    background-color: #eee;
 }
 
 .todoitem.completed {
     text-decoration: line-through;
+    color: green;
 }
