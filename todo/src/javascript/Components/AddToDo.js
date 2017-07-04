@@ -10,6 +10,6 @@ const AddToDo = (props) => {
                 onKeyPress={props.addItem} />
         </div>
     );
-}
+};
 
 export default AddToDo;

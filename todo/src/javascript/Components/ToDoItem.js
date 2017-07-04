@@ -17,6 +17,6 @@ const ToDoItem = (props) => {
             <span className="todo-delete">&#xd7;</span>
         </li>
     );
-}
+};
 
 export default ToDoItem;
