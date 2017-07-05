@@ -3,6 +3,9 @@ import ToDoItem from './ToDoItem';
 import AddToDo from './AddToDo';
 import '../../css/ToDoList.css';
 
+// use prevState
+// https://medium.freecodecamp.org/react-pattern-extract-child-components-to-avoid-binding-e3ad8310725e
+
 class ToDoList extends Component {
     constructor() {
         super();
