@@ -18,24 +18,21 @@ class ToDoList extends Component {
     }
     
     handleComplete(id) { 
-        const todo = this.state.todo;
-        const item = todo.find(item => item.id === id);
-          
-        if (typeof item === 'undefined') {
-            return;
-        }
+        this.setState(({ todo }) => {
+            // find the object that we want to update
+            const todoItem = todo.findIndex(item => item.id === id);
             
-        item.completed = !item.completed;   
-        
-        const index = todo.findIndex(item => item.id === id);
-        const todoCopy = todo.slice();
+            // whilst this is a simple solution
+            // it's not adhering to immutable principles
+            // and we should try to keep objects immutable wherever possible
+            // https://facebook.github.io/react/docs/update.html
+            todo[todoItem].completed = !todo[todoItem].completed;
 
-        // remove the current object
-        todoCopy.splice(index, 1);
-        // replace with the new object
-        todoCopy.push(item);
-        // update state and force a render
-        this.setState({ todo: todoCopy })
+            // update state
+            return {
+                todo
+            };
+        });
     }
 
     addItem(e) {
@@ -43,34 +40,42 @@ class ToDoList extends Component {
             return;
         }
 
-        const todo = this.state.todo;
-        const name = e.target.value;
+        // generate a random id based on the current date and time
+        // this can be updated later after a successful AJAX request
+        // returns the newly generated item
         const id = new Date().getTime();
-        
-        todo.push({
-            name, id, completed: false
-        });
+        const name = e.target.value;
 
-        this.setState({ todo });
+        // newly created items will be incomplete by default
+        const completed = false;
+
+        // destructuring allows us to extract the body of state 
+        // in a custom variable
+        // todo now contains state.todo
+        this.setState(({ todo }) => { 
+            
+            // push our new item into the previous state
+            todo.push({
+                id, 
+                name,
+                completed
+            });
+
+            // return newly updated state 
+            return {
+                todo
+            };
+        });
 
         e.target.value = '';
     }
 
     handleDelete(id) {
-        const todo = this.state.todo;
-        const itemIndex = todo.findIndex(item => item.id === id);
-          
-        if (typeof itemIndex === 'undefined') {
-            return;
-        }
-            
-        const todoCopy = todo.slice();
-
-        // remove the current object
-        todoCopy.splice(itemIndex, 1);
-        
-        // update state and force a render
-        this.setState({ todo: todoCopy })
+        this.setState((prevState) => {
+            return {
+                todo: prevState.todo.filter(item => item.id !== id)
+            };
+        });
     }
 
     renderItems() {
