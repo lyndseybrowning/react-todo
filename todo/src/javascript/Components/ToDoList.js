@@ -4,6 +4,7 @@ import AddToDo from './AddToDo';
 import '../../css/ToDoList.css';
 
 class ToDoList extends Component {
+    
     constructor() {
         super();
         this.state = {
@@ -17,7 +18,7 @@ class ToDoList extends Component {
         };
     }
     
-    handleComplete(id) { 
+    completeItem(id) { 
         this.setState(({ todo }) => {
             // find the object that we want to update
             const todoItem = todo.findIndex(item => item.id === id);
@@ -70,7 +71,7 @@ class ToDoList extends Component {
         e.target.value = '';
     }
 
-    handleDelete(id) {
+    deleteItem(id) {
         this.setState((prevState) => {
             return {
                 todo: prevState.todo.filter(item => item.id !== id)
@@ -79,34 +80,35 @@ class ToDoList extends Component {
     }
 
     renderItems() {
-        const items = this.state.todo;
-        const sortComplete = ((a, b) => a.completed > b.completed);
-        const sortAlpha = ((a, b) => a.name > b.name);
-
-        return items
-            .sort(sortAlpha)
-            .sort(sortComplete)
+        
+        // sort functions
+        const alphabetically = ((a, b) => a.name > b.name);
+        const completed = ((a, b) => a.completed > b.completed);
+        
+        return this.state.todo
+            .sort(alphabetically)
+            .sort(completed)
             .map((item) => (
                 <ToDoItem 
                     key={item.id} 
                     id={item.id} 
                     name={item.name} 
                     completed={item.completed}
-                    handleComplete={this.handleComplete.bind(this)}
-                    handleDelete={this.handleDelete.bind(this)}
+                    completeItem={this.completeItem.bind(this)}
+                    deleteItem={this.deleteItem.bind(this)}
                 />
         ));
     }
     
     render() {
-        const items = this.state.todo; 
+        const totalItems = this.state.todo.length; 
 
         return (
             <div className="todo">
-                <div>Total Items: <span>{items.length}</span></div>
+                <div>Total Items: <span>{totalItems}</span></div>
                 <AddToDo addItem={this.addItem.bind(this)} />
                 { 
-                    items.length === 0 
+                    totalItems === 0 
                     ? "There are no items in your to do list" 
                     : <ul> { this.renderItems() } </ul>
                 }
