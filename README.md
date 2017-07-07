@@ -33,3 +33,10 @@ npm start
 ```
 
 The project will be available on http://localhost:3000/
+
+## Useful links
+
+- [Create React App](https://github.com/facebookincubator/create-react-app)
+- [React Dev Tools(Chrome)](https://chrome.google.com/webstore/detail/react-developer-tools/fmkadmapgofadopljbjfkapdkoienihi?hl=en)
+- [Introducing JSX](https://facebook.github.io/react/docs/introducing-jsx.html)
+

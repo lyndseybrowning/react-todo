@@ -3,8 +3,6 @@ import ToDoItem from './ToDoItem';
 import AddToDo from './AddToDo';
 import '../../css/ToDoList.css';
 
-// React dev tools and $r
-
 class ToDoList extends Component {
     
     constructor() {
