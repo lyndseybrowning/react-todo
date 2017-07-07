@@ -79,15 +79,9 @@ class ToDoList extends Component {
         });
     }
 
-    renderItems() {
-        
-        // sort functions
-        const alphabetically = ((a, b) => a.name > b.name);
-        const completed = ((a, b) => a.completed > b.completed);
-        
+    renderItems() {   
         return this.state.todo
-            .sort(alphabetically)
-            .sort(completed)
+            .sort((a, b) => a.completed > b.completed)
             .map((item) => (
                 <ToDoItem 
                     key={item.id} 

@@ -36,5 +36,5 @@
 
 .todoitem.completed {
     text-decoration: line-through;
-    color: green;
+    color: #e3e2de;
 }
