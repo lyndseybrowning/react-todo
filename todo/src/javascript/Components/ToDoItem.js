@@ -13,7 +13,7 @@ const ToDoItem = (props) => {
     return (
         <li className="todo-item">
             <input 
-                type="radio" 
+                type="checkbox" 
                 name={`item${props.id}`} 
                 className="todo-complete" 
                 checked={isComplete} 
