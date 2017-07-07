@@ -72,9 +72,34 @@ class ToDoList extends Component {
     }
 
     deleteItem(id) {
-        this.setState((prevState) => {
+        this.setState(({ todo }) => {
             return {
-                todo: prevState.todo.filter(item => item.id !== id)
+                todo: todo.filter(item => item.id !== id)
+            };
+        });
+    }
+
+    handleEdit(id) {
+        this.setState({
+            editing: id
+        })
+    }
+
+    editItem(e, id, isBlurEvent = false) {
+        if (!isBlurEvent && (e.key !== 'Enter' || !e.target.value)) {
+            return;
+        }
+
+        const name = e.target.value;
+
+        this.setState(({ todo }) => {
+            // find the object that we want to update
+            const todoItem = todo.findIndex(item => item.id === id);
+            todo[todoItem].name = name;
+
+            return {
+                todo,
+                editing: null 
             };
         });
     }
@@ -90,6 +115,9 @@ class ToDoList extends Component {
                     completed={item.completed}
                     completeItem={this.completeItem.bind(this)}
                     deleteItem={this.deleteItem.bind(this)}
+                    handleEdit={this.handleEdit.bind(this)}
+                    editing={this.state.editing}
+                    editItem={this.editItem.bind(this)}
                 />
         ));
     }
