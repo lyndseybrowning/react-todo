@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import ToDoItem from './ToDoItem';
 import AddToDo from './AddToDo';
+import ToDoFilter from './ToDoFilter';
 import '../../css/ToDoList.css';
 
 class ToDoList extends Component {
@@ -14,7 +15,7 @@ class ToDoList extends Component {
                     name: 'Create React To-Do List',
                     completed: true
                 },
-            ]
+            ],
         };
     }
     
@@ -104,9 +105,27 @@ class ToDoList extends Component {
         });
     }
 
+    setFilter(filter) {
+        this.setState({
+            filtered: filter
+        });
+    }
+
+    filterItems(filtered, item) {
+        switch (filtered) {
+            case 'active':
+                return !item.completed;
+            case 'completed':
+                return item.completed;
+            default:
+                return item;
+        }
+    }
+
     renderItems() {   
         return this.state.todo
             .sort((a, b) => a.completed > b.completed)
+            .filter(this.filterItems.bind(null, this.state.filtered))
             .map((item) => (
                 <ToDoItem 
                     key={item.id} 
@@ -123,17 +142,22 @@ class ToDoList extends Component {
     }
     
     render() {
-        const totalItems = this.state.todo.length; 
+        const items = this.renderItems();
+        const totalItems = items.length;
 
         return (
             <div className="todo">              
                 <AddToDo addItem={this.addItem.bind(this)} />
                 { 
                     totalItems === 0 
-                    ? "There are no items in your to do list" 
-                    : <ul> { this.renderItems() } </ul>
+                    ? <p> There are no items to display </p>
+                    : <ul> { items } </ul>
                 }
-                <div className="total-items">Total Items: <span>{totalItems}</span></div>
+                <div className="todo-footer">
+                    <span>Showing <span>{totalItems} of {this.state.todo.length}</span> items</span>
+                    <ToDoFilter filtered={this.state.filtered} setFilter={this.setFilter.bind(this)} />
+                </div>
+                
             </div>
         );
     }
