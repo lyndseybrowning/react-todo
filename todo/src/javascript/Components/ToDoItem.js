@@ -20,8 +20,12 @@ const ToDoItem = (props) => {
 
     const completeStyle = completed ?  'todo-text completed' : 'todo-text';
 
-    const handleBlur = (id, e) => {
+    const handleBlur = (id, name, e) => {
         const value = e.target.value;
+
+        if (value === '') {
+            e.target.value = name;
+        }
 
         editItem(e, id, true);
     };
@@ -47,7 +51,7 @@ const ToDoItem = (props) => {
                     type="text" 
                     className="todo-edit"
                     defaultValue={name} 
-                    onBlur={handleBlur.bind(null, id)}
+                    onBlur={handleBlur.bind(null, id, name)}
                     onKeyPress={(e) => editItem(e, id)}
                 />
             );

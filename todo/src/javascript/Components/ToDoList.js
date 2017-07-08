@@ -12,7 +12,7 @@ class ToDoList extends Component {
                 {
                     id: 1,
                     name: 'Create React To Do List example',
-                    completed: false
+                    completed: true
                 },
             ]
         };
