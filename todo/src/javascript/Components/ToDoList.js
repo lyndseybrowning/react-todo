@@ -11,7 +11,7 @@ class ToDoList extends Component {
             todo: [
                 {
                     id: 1,
-                    name: 'Create React To Do List example',
+                    name: 'Create React To-Do List',
                     completed: true
                 },
             ]
@@ -126,14 +126,14 @@ class ToDoList extends Component {
         const totalItems = this.state.todo.length; 
 
         return (
-            <div className="todo">
-                <div>Total Items: <span>{totalItems}</span></div>
+            <div className="todo">              
                 <AddToDo addItem={this.addItem.bind(this)} />
                 { 
                     totalItems === 0 
                     ? "There are no items in your to do list" 
                     : <ul> { this.renderItems() } </ul>
                 }
+                <div className="total-items">Total Items: <span>{totalItems}</span></div>
             </div>
         );
     }

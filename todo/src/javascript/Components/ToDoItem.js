@@ -18,7 +18,7 @@ const ToDoItem = (props) => {
         editItem
     } = props;
 
-    const completeStyle = completed ?  'todo-text completed' : 'todo-text';
+    const completeStyle = completed ?  'todo-item completed' : 'todo-item';
 
     const handleBlur = (id, name, e) => {
         const value = e.target.value;
@@ -39,7 +39,7 @@ const ToDoItem = (props) => {
         // we shouldn't let the user edit it.
         if (completed) {
             return (
-                <span className={completeStyle}>
+                <span className="todo-text">
                     <span>{name}</span>
                 </span>
             )
@@ -58,14 +58,14 @@ const ToDoItem = (props) => {
         }
 
         return (
-            <span className={completeStyle} onClick={() => handleEdit(id)}> 
+            <span className="todo-text" onClick={() => handleEdit(id)}> 
                 <span>{name}</span>
             </span>
         );
     };
 
     return (
-        <li className="todo-item">    
+        <li className={completeStyle}>    
             <input 
                 type="checkbox" 
                 name={`item${id}`} 

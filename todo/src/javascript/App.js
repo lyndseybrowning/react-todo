@@ -11,9 +11,8 @@ class App extends Component {
           <img src={logo} className="App-logo" alt="logo" />
           <h2>React To Do List</h2>
         </div>
-        <p className="App-intro">
-          This is an example of a To Do List created using <code>ReactJs</code>.
-        </p>
+        <p>Press the <code>Enter</code> key to add a new item. </p>
+        <p><code>Click</code> on an item's name to edit it.</p>
         <ToDoList />
       </div>
     );
