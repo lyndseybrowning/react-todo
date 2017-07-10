@@ -7,6 +7,10 @@ import React from 'react';
 // props is an object containing all props passed to the component
 const ToDoItem = (props) => {
 
+    // this is a very nice way of destructuring objects
+    // using ES6/ES2015
+    // we are literally extracting the variables from props
+    // in the order that they are received and storing them in our own variables
     const {
         id,
         name,
@@ -27,6 +31,9 @@ const ToDoItem = (props) => {
             e.target.value = name;
         }
 
+        // tell the editItem function that
+        // we are in the onBlur event
+        // so that it doesn't check for an Enter key being pressed
         editItem(e, id, true);
     };
 
@@ -34,7 +41,6 @@ const ToDoItem = (props) => {
     // show the input field
     // otherwise, just show the item name
     const isEdit = () => {
-
         // if the item is completed,
         // we shouldn't let the user edit it.
         if (completed) {
