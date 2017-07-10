@@ -17,7 +17,7 @@ git clone https://github.com/lyndseybrowning/react-todo
 Move into the project directory
 
 ```
-cd todo
+cd react-todo/todo
 ```
 
 Install project dependencies
