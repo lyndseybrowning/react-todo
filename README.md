@@ -39,4 +39,7 @@ The project will be available on http://localhost:3000/
 - [Create React App](https://github.com/facebookincubator/create-react-app)
 - [React Dev Tools(Chrome)](https://chrome.google.com/webstore/detail/react-developer-tools/fmkadmapgofadopljbjfkapdkoienihi?hl=en)
 - [Introducing JSX](https://facebook.github.io/react/docs/introducing-jsx.html)
-
+- [Webpack](https://webpack.js.org/)
+- [ES2015 Modules](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/import)
+- [ES2015 Destructuring Assignment](https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Operators/Destructuring_assignment)
+- [ES2015 Classes](https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Classes)
